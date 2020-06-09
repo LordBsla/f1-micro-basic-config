@@ -1,6 +1,8 @@
 # f1-micro-basic-config
 A small script that auto-configures Google cloud's "f1-micro" machines to preform optimaly as a static website host 
-
+<h4>Prerequisites</h4>
+- an f1-micro instance with ubuntu-20.04 and git<br>
+-a registered domain name
 <h2>What does it do?</h2>
 <ul>
   <li>Adds a small swapfile</li>
