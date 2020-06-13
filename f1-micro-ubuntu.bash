@@ -15,7 +15,7 @@ echo "@daily systemctl reboot" >> /var/spool/cron/crontabs/root
 echo "@hourly apt update && apt upgrade -y" >> /var/spool/cron/crontabs/root
 #packages0
 sleep 1
-apt install cron software-properties-common wget git php-curl php-gd php-mbstring php-xml php-xmlrpc tmux vsftpd net-tools ufw zram -y
+apt install cron software-properties-common wget git php-curl php-gd php-mbstring php-xml php-xmlrpc tmux vsftpd net-tools ufw zram certbot python3-certbot-apache -y
 #Custom Kernal - Live patch won't work so a server restart every once in a while would be neccesarry
 add-apt-repository ppa:damentz/liquorix && apt-get update
 sleep 1
@@ -41,8 +41,9 @@ printf "# prefork MPM\n# StartServers: number of server processes to start\n# Mi
 # you can also do:
 #apt-get install lamp-server^
 ufw allow OpenSSH
-ufw allow 22/tcp
+ufw allow 22/tcp #SFTP
 ufw allow Apache
+ufw allow 443/tcp #SSL/Let's encrypt
 ufw enable
 printf "<Directory /home/abdo/>\n        Options Indexes FollowSymLinks\n        AllowOverride None\n        Require all granted\n</Directory>
 " >> /etc/apache2/apache2.conf
@@ -52,4 +53,3 @@ printf "<Directory /home/abdo/>\n        Options Indexes FollowSymLinks\n       
 #Always reload apache so that changes could take place
 #to make sure you did setup the dns 'A' records, you can ping the domain name and see if the command 'ping' points to your server's external ip adress to make sure it's working correctly
 #UFW's Bitch (3 hours of mylife never coming back)
-
