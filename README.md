@@ -12,5 +12,6 @@ A small script that auto-configures Google cloud's "f1-micro" machines to prefor
 <code>Installs LIQUORIX Custom Kernal and Zram (since the server instance would have to deal with a lot of swaping and I/O operations due to the lack of RAM)</code><br><br>
 <code>Installs and configures ufw(opens ports for openssh, Apache, SFTP and SSL)</code>
 <br><br>
+<code>Installs fail2ban and applies the default configs</code><br><br>
 <strong>To keep the custom kernal up to date, the server would have to have around 20:30 seconds of downtime everyday at 12AM after an update&restart cron-job</strong>
   <h3>TODO</h3>

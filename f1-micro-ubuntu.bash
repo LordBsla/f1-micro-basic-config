@@ -48,6 +48,9 @@ ufw enable
 printf "<Directory /home/abdo/>\n        Options Indexes FollowSymLinks\n        AllowOverride None\n        Require all granted\n</Directory>
 " >> /etc/apache2/apache2.conf
 cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.local
+systemctl enable fail2ban
+systemctl start fallocate
+system reload fail2ban
 #---------------
 #you might wanna put your website in /home/$user/example.com so you can edit the website via SFTP without needing root premissions
 #'a2ensite' is used to load an Apache config from /etc/apche2/sites-available while 'a2dissite' is used to disable them
