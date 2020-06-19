@@ -15,7 +15,7 @@ echo "@daily systemctl reboot" >> /var/spool/cron/crontabs/root
 echo "@hourly apt update && apt upgrade -y" >> /var/spool/cron/crontabs/root
 #packages0
 sleep 1
-apt install cron software-properties-common wget git php-curl php-gd php-mbstring php-xml php-xmlrpc tmux vsftpd net-tools ufw zram certbot python3-certbot-apache -y
+apt install cron software-properties-common wget git php-curl php-gd php-mbstring php-xml php-xmlrpc tmux vsftpd net-tools ufw zram fail2ban -y
 #Custom Kernal - Live patch won't work so a server restart every once in a while would be neccesarry
 add-apt-repository ppa:damentz/liquorix && apt-get update
 sleep 1
@@ -47,6 +47,7 @@ ufw allow 443/tcp #SSL/Let's encrypt
 ufw enable
 printf "<Directory /home/abdo/>\n        Options Indexes FollowSymLinks\n        AllowOverride None\n        Require all granted\n</Directory>
 " >> /etc/apache2/apache2.conf
+cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.local
 #---------------
 #you might wanna put your website in /home/$user/example.com so you can edit the website via SFTP without needing root premissions
 #'a2ensite' is used to load an Apache config from /etc/apche2/sites-available while 'a2dissite' is used to disable them
