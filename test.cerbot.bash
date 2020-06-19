@@ -6,3 +6,4 @@ sleep 1 && clear
 echo "Please enter your domain name"
 read domain
 certbot --apache -d $domain
+#Temp
